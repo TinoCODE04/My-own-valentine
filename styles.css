@@ -16,9 +16,17 @@ body {
 }
 
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Floating Hearts Background */
@@ -29,7 +37,7 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 100;
     overflow: hidden;
 }
 
@@ -37,8 +45,8 @@ body {
 .hearts-container::after {
     content: '❤️';
     position: absolute;
-    font-size: 2rem;
-    opacity: 0.3;
+    font-size: 3rem;
+    opacity: 0.6;
     animation: floatHeart 20s infinite ease-in-out;
 }
 
@@ -54,10 +62,23 @@ body {
 }
 
 @keyframes floatHeart {
-    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.3; }
-    90% { opacity: 0.3; }
-    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* Pages */
@@ -81,6 +102,30 @@ body {
     visibility: visible;
 }
 
+/* Custom background for question page */
+.custom-bg {
+    background-image: url('assets/bg-1.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.custom-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+.custom-bg .content-wrapper {
+    position: relative;
+    z-index: 20;
+}
+
 .content-wrapper {
     text-align: center;
     padding: 2rem;
@@ -96,15 +141,25 @@ body {
 }
 
 @keyframes bounceIn {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .cute-gif,
 .flower-gif {
-    width: 200px;
-    height: 200px;
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
@@ -113,8 +168,15 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 /* Typography */
@@ -129,8 +191,15 @@ body {
 }
 
 @keyframes slideInDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .subtitle,
@@ -143,8 +212,13 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Buttons Container */
@@ -177,8 +251,15 @@ body {
 }
 
 @keyframes slideInLeft {
-    from { transform: translateX(-100px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .yes-button:hover {
@@ -192,9 +273,9 @@ body {
 
 /* No Button */
 .no-button {
-    background: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 100%);
-    color: #666;
-    font-size: 1.25rem;
+    background: linear-gradient(135deg, #be70ca 0%, #d29bb0 100%);
+    color: #ffffff;
+    font-size: 1.2rem;
     font-weight: 600;
     padding: 1rem 2.5rem;
     border: none;
@@ -202,14 +283,21 @@ body {
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    position: absolute;
+    position: relative;
     z-index: 99;
     animation: slideInRight 1s ease;
 }
 
 @keyframes slideInRight {
-    from { transform: translateX(100px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .no-button:hover {
@@ -229,8 +317,15 @@ body {
 }
 
 @keyframes scaleIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .success-message p {
@@ -246,9 +341,121 @@ body {
 }
 
 @keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    10%, 30% { transform: scale(1.2); }
-    20%, 40% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    10%,
+    30% {
+        transform: scale(1.2);
+    }
+
+    20%,
+    40% {
+        transform: scale(1.1);
+    }
+}
+
+/* Secret Button */
+.secret-button {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.875rem 2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+    transition: all 0.3s ease;
+    animation: fadeIn 1.5s ease;
+}
+
+.secret-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 107, 157, 0.6);
+}
+
+.secret-button:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Secret Photo Container */
+.secret-photo-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.secret-photo-container.active {
+    display: flex;
+    opacity: 1;
+}
+
+.photo-wrapper {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    animation: photoZoomIn 0.5s ease;
+}
+
+@keyframes photoZoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.special-photo {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(255, 107, 157, 0.6);
+    border: 5px solid rgba(255, 255, 255, 0.8);
+    object-fit: contain;
+}
+
+.close-button {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #f5576c 0%, #d81b60 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(245, 87, 108, 0.5);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.close-button:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 8px 20px rgba(245, 87, 108, 0.7);
 }
 
 /* Confetti */
@@ -279,52 +486,63 @@ body {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+
     .question-text,
     .success-text {
         font-size: 2rem;
     }
-    
+
     .subtitle,
     .success-subtitle {
         font-size: 1rem;
     }
-    
+
     .yes-button {
         font-size: 1.25rem;
         padding: 1rem 2.5rem;
     }
-    
+
     .no-button {
         font-size: 1rem;
         padding: 0.875rem 2rem;
     }
-    
+
     .cute-gif,
     .flower-gif {
-        width: 150px;
-        height: 150px;
+        width: 240px;
+        height: 240px;
     }
-    
+
     .buttons-container {
         gap: 1.5rem;
         min-height: 120px;
     }
-    
+
     .success-message p {
         font-size: 1rem;
+    }
+
+    .secret-button {
+        font-size: 1rem;
+        padding: 0.75rem 1.75rem;
+    }
+
+    .photo-wrapper {
+        max-width: 95%;
     }
 }
 
 @media (max-width: 480px) {
+
     .question-text,
     .success-text {
         font-size: 1.75rem;
     }
-    
+
     .content-wrapper {
         padding: 1rem;
     }
-    
+
     .buttons-container {
         gap: 1rem;
     }

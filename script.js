@@ -13,19 +13,19 @@ function getRandomPosition() {
     const container = document.querySelector('.buttons-container');
     const containerRect = container.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
-    
+
     // Calculate maximum positions to keep button within viewport
     const maxX = window.innerWidth - btnRect.width - 40;
     const maxY = window.innerHeight - btnRect.height - 40;
-    
+
     // Generate random positions
     let randomX = Math.random() * maxX;
     let randomY = Math.random() * maxY;
-    
+
     // Ensure minimum distance from edges
     randomX = Math.max(20, Math.min(randomX, maxX));
     randomY = Math.max(100, Math.min(randomY, maxY - 100));
-    
+
     return { x: randomX, y: randomY };
 }
 
@@ -33,18 +33,18 @@ function getRandomPosition() {
 function moveNoButton() {
     noButtonClicks++;
     const { x, y } = getRandomPosition();
-    
+
     // Apply random position
     noBtn.style.position = 'fixed';
     noBtn.style.left = `${x}px`;
     noBtn.style.top = `${y}px`;
     noBtn.style.transform = 'translate(0, 0)';
-    
+
     // Optional: Make button smaller after several attempts
     if (noButtonClicks > 3) {
         noBtn.style.transform = `scale(${1 - (noButtonClicks * 0.05)})`;
     }
-    
+
     // Add a little shake animation
     noBtn.style.animation = 'none';
     setTimeout(() => {
@@ -56,7 +56,7 @@ function moveNoButton() {
 function createConfetti() {
     const colors = ['#ff6b9d', '#c44569', '#f8b500', '#ff3838', '#ff6348', '#ffa502'];
     const confettiCount = 100;
-    
+
     for (let i = 0; i < confettiCount; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
@@ -64,14 +64,14 @@ function createConfetti() {
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         confetti.style.animationDelay = Math.random() * 3 + 's';
         confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        
+
         // Random shapes
         if (Math.random() > 0.5) {
             confetti.style.borderRadius = '50%';
         }
-        
+
         confettiContainer.appendChild(confetti);
-        
+
         // Remove confetti after animation
         setTimeout(() => {
             confetti.remove();
@@ -82,36 +82,57 @@ function createConfetti() {
 // Create floating hearts in background
 function createFloatingHearts() {
     const heartsContainer = document.querySelector('.hearts-container');
-    const hearts = ['❤️', '💕', '💖', '💗', '💝', '💘'];
-    
+    const hearts = ['❤️', '💕', '💖', '💗', '💝', '💘', '💓', '💞'];
+
     setInterval(() => {
         const heart = document.createElement('div');
         heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
         heart.style.position = 'absolute';
         heart.style.left = Math.random() * 100 + '%';
-        heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+        heart.style.fontSize = (Math.random() * 2 + 2) + 'rem';
         heart.style.opacity = '0';
         heart.style.animation = `floatHeart ${15 + Math.random() * 10}s linear`;
-        
+        heart.style.zIndex = '150';
+
         heartsContainer.appendChild(heart);
-        
+
         // Remove heart after animation
         setTimeout(() => {
             heart.remove();
         }, 25000);
-    }, 3000);
+    }, 1500);
 }
+
+// Secret photo functionality
+const secretBtn = document.getElementById('secret-btn');
+const secretPhoto = document.getElementById('secret-photo');
+const closePhotoBtn = document.getElementById('close-photo');
+
+secretBtn.addEventListener('click', () => {
+    secretPhoto.classList.add('active');
+});
+
+closePhotoBtn.addEventListener('click', () => {
+    secretPhoto.classList.remove('active');
+});
+
+// Close photo when clicking outside the image
+secretPhoto.addEventListener('click', (e) => {
+    if (e.target === secretPhoto) {
+        secretPhoto.classList.remove('active');
+    }
+});
 
 // Handle Yes button click
 yesBtn.addEventListener('click', () => {
     // Hide question page
     questionPage.classList.remove('active');
-    
+
     // Show success page after short delay
     setTimeout(() => {
         successPage.classList.add('active');
         createConfetti();
-        
+
         // Add more confetti for emphasis!
         setTimeout(createConfetti, 1000);
         setTimeout(createConfetti, 2000);
