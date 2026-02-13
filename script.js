@@ -103,13 +103,80 @@ function createFloatingHearts() {
     }, 1500);
 }
 
-// Secret photo functionality
+// Secret photo functionality with input validation
 const secretBtn = document.getElementById('secret-btn');
 const secretPhoto = document.getElementById('secret-photo');
 const closePhotoBtn = document.getElementById('close-photo');
+const inputModal = document.getElementById('input-modal');
+const secretInput = document.getElementById('secret-input');
+const submitAnswerBtn = document.getElementById('submit-answer');
+const closeModalBtn = document.getElementById('close-modal');
+const warningPopup = document.getElementById('warning-popup');
 
+// Correct answer (case-insensitive)
+const correctAnswer = '笨蛋宝宝';
+
+// Show input modal when secret button is clicked
 secretBtn.addEventListener('click', () => {
-    secretPhoto.classList.add('active');
+    inputModal.classList.add('active');
+    secretInput.value = ''; // Clear previous input
+    secretInput.focus(); // Auto-focus on input
+});
+
+// Close modal button
+closeModalBtn.addEventListener('click', () => {
+    inputModal.classList.remove('active');
+    secretInput.value = '';
+});
+
+// Close modal when clicking outside
+inputModal.addEventListener('click', (e) => {
+    if (e.target === inputModal) {
+        inputModal.classList.remove('active');
+        secretInput.value = '';
+    }
+});
+
+// Function to show warning popup
+function showWarning() {
+    warningPopup.classList.add('active');
+    
+    // Auto-hide warning after 5.0 seconds
+    setTimeout(() => {
+        warningPopup.classList.remove('active');
+    }, 5000);
+}
+
+// Validate answer and show photo or warning
+function validateAnswer() {
+    const userAnswer = secretInput.value.trim();
+    
+    if (userAnswer === correctAnswer) {
+        // Correct answer! Hide modal and show photo
+        inputModal.classList.remove('active');
+        secretInput.value = '';
+        
+        // Small delay for smooth transition
+        setTimeout(() => {
+            secretPhoto.classList.add('active');
+        }, 300);
+    } else {
+        // Wrong answer! Show cute warning
+        showWarning();
+        secretInput.value = ''; // Clear input
+        secretInput.focus(); // Refocus for retry
+    }
+}
+
+// Submit button click
+submitAnswerBtn.addEventListener('click', validateAnswer);
+
+// Allow Enter key to submit
+secretInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        validateAnswer();
+    }
 });
 
 closePhotoBtn.addEventListener('click', () => {
