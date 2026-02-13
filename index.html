@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💝 Will You Be My Valentine? 💝</title>
+    <meta name="description" content="A special Valentine's Day question for someone special">
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container"></div>
+    
+    <!-- First Page: Question -->
+    <div id="question-page" class="page active">
+        <div class="content-wrapper">
+            <!-- Cute GIF -->
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNkd3B6OHI3aW1wN3p0YzRvdmNrZXNvY3d5dGN6dG85anRmeTR5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l4KhQOsvne9854I7K/giphy.gif" 
+                     alt="Cute Valentine hearts" 
+                     class="cute-gif">
+            </div>
+            
+            <!-- Question Text -->
+            <h1 class="question-text">
+                Will You Be My Valentine?
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="subtitle">
+                Please say yes... 💕
+            </p>
+            
+            <!-- Buttons Container -->
+            <div class="buttons-container">
+                <button id="yes-btn" class="yes-button">
+                    Yes! 💖
+                </button>
+                <button id="no-btn" class="no-button">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Second Page: Success -->
+    <div id="success-page" class="page">
+        <div class="content-wrapper">
+            <!-- Flower GIF -->
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzY5dXdyZXJ3dXNwYWRqYXRob3Flbzh4YTl1YzNxbnJzYm1xbGw1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l0HlSLUjbqJNTfGuA/giphy.gif" 
+                     alt="Beautiful flowers" 
+                     class="flower-gif">
+            </div>
+            
+            <!-- Success Message -->
+            <h1 class="success-text">
+                Yaaay! 🎉
+            </h1>
+            
+            <p class="success-subtitle">
+                You just made me the happiest person! 💝
+            </p>
+            
+            <div class="success-message">
+                <p>I can't wait to spend this special day with you!</p>
+                <p class="heart-symbol">❤️</p>
+            </div>
+        </div>
+        
+        <!-- Confetti Container -->
+        <div id="confetti-container"></div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
